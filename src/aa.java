@@ -8,12 +8,13 @@ import javafx.util.Duration;
 
 class aa {
     static void screenTransition(GridPane pane1, GridPane pane2, Group group) {
+        int animationLength = 10000;
 
         Rectangle transitionScreen = new Rectangle(0, 0, 480, 500);
         transitionScreen.toFront();
         transitionScreen.setFill(Color.BLACK);
         group.getChildren().add(transitionScreen);
-        FadeTransition ft = new FadeTransition((Duration.millis(2000)), transitionScreen);
+        FadeTransition ft = new FadeTransition((Duration.millis(animationLength/2)), transitionScreen);
         ft.setFromValue(0);
         ft.setToValue(1);
         ft.setCycleCount(2);
@@ -23,7 +24,7 @@ class aa {
             @Override
             protected Void call() throws Exception {
                 try {
-                    Thread.sleep(4000);
+                    Thread.sleep(animationLength);
                 } catch (InterruptedException ignored) {
                 }
                 return null;
@@ -33,7 +34,7 @@ class aa {
             @Override
             protected Void call() throws Exception {
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(animationLength/2);
                 } catch (InterruptedException ignored) {
                 }
                 return null;
