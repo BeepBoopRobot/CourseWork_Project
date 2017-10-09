@@ -6,15 +6,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-class aa {
-    static void screenTransition(GridPane pane1, GridPane pane2, Group group) {
-        int animationLength = 10000;
+class transition {
+    static void screenChange(GridPane pane1, GridPane pane2, Group group) {
+        int animationLength = 2000;
 
         Rectangle transitionScreen = new Rectangle(0, 0, 480, 500);
         transitionScreen.toFront();
         transitionScreen.setFill(Color.BLACK);
         group.getChildren().add(transitionScreen);
-        FadeTransition ft = new FadeTransition((Duration.millis(animationLength/2)), transitionScreen);
+        FadeTransition ft = new FadeTransition((Duration.millis(animationLength)), transitionScreen);
         ft.setFromValue(0);
         ft.setToValue(1);
         ft.setCycleCount(2);
@@ -24,7 +24,7 @@ class aa {
             @Override
             protected Void call() throws Exception {
                 try {
-                    Thread.sleep(animationLength);
+                    Thread.sleep(animationLength*2);
                 } catch (InterruptedException ignored) {
                 }
                 return null;
@@ -34,7 +34,7 @@ class aa {
             @Override
             protected Void call() throws Exception {
                 try {
-                    Thread.sleep(animationLength/2);
+                    Thread.sleep(animationLength);
                 } catch (InterruptedException ignored) {
                 }
                 return null;

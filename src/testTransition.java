@@ -38,10 +38,10 @@ public class testTransition {
         ImageView ab = new ImageView(birb);
         monkey.getChildren().add(ab);
         Button exitAb = new Button("<");
-        exitAb.setOnAction(event -> aa.screenTransition(monkey, defaultPane, group));
+        exitAb.setOnAction(event -> transition.screenChange(monkey, defaultPane, group));
         monkey.getChildren().add(exitAb);
         Button enterAb = new Button("birb");
-        enterAb.setOnAction(event -> aa.screenTransition(defaultPane, monkey, group));
+        enterAb.setOnAction(event -> transition.screenChange(defaultPane, monkey, group));
 
         Image bone = new Image("skeleton-animated-gif-20.gif");
         ImageView bones = new ImageView(bone);
@@ -49,14 +49,14 @@ public class testTransition {
         ImageView iv = new ImageView(image);
 
         Button exit = new Button("<");
-        exit.setOnAction(event -> aa.screenTransition(boneZone, defaultPane, group));
+        exit.setOnAction(event -> transition.screenChange(boneZone, defaultPane, group));
         boneZone.getChildren().addAll(bones, exit);
         group2.getChildren().add(boneZone);
 
 
         Button enter = new Button();
         enter.setText(">");
-        enter.setOnAction(event -> aa.screenTransition(defaultPane, boneZone, group));
+        enter.setOnAction(event -> transition.screenChange(defaultPane, boneZone, group));
 
         defaultPane = new GridPane();
         defaultPane.setHgap(10);
