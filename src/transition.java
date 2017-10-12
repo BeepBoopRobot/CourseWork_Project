@@ -1,14 +1,14 @@
 import javafx.animation.FadeTransition;
 import javafx.concurrent.Task;
 import javafx.scene.Group;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 class transition {
-    static void screenChange(GridPane pane1, GridPane pane2, Group group) {
-        int animationLength = 2000;
+    static void screenChange(Pane pane1, Pane pane2, Group group) {
+        int animationLength = 100;
 
         Rectangle transitionScreen = new Rectangle(0, 0, 480, 500);
         transitionScreen.toFront();
@@ -46,7 +46,7 @@ class transition {
         new Thread(changeScene).start();
     }
 
-    private static void swapScreens(GridPane pane1, GridPane pane2, Group group)
+    private static void swapScreens(Pane pane1, Pane pane2, Group group)
     {
         group.getChildren().remove(pane1);
         group.getChildren().add(pane2);
