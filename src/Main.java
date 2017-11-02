@@ -6,7 +6,6 @@ import java.io.*;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -30,8 +29,8 @@ public class Main {
         stage.setResizable(false);
         stage.show();
 
-        String soundFile = "D:\\Music\\Yo Noid 2\\Jesse Hamel - Yo! Noid 2- Enter the Void OST - 10 Noid Void 3.mp3";
-        String imageBak = "City17.jpg";
+        String soundFile = "src/Sounds/Half - Life 2 Soundtrack- Intro.mp3";
+        String imageBak = "images/City17.jpg";
         Group group = new Group();
         Scene menuScene = new Scene(group, 500, 312, Color.FORESTGREEN);
         GridPane menuPane = new GridPane();
