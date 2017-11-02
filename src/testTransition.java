@@ -34,13 +34,13 @@ public class testTransition {
         boneZone.setVgap(10);
 
         GridPane monkey = new GridPane();
-        Image birb = new Image("birb.gif");
-        ImageView ab = new ImageView(birb);
+        Image bird = new Image("birb.gif");
+        ImageView ab = new ImageView(bird);
         monkey.getChildren().add(ab);
         Button exitAb = new Button("<");
         exitAb.setOnAction(event -> transition.screenChange(monkey, defaultPane, group));
         monkey.getChildren().add(exitAb);
-        Button enterAb = new Button("birb");
+        Button enterAb = new Button("bird");
         enterAb.setOnAction(event -> transition.screenChange(defaultPane, monkey, group));
 
         Image bone = new Image("skeleton-animated-gif-20.gif");
@@ -52,7 +52,6 @@ public class testTransition {
         exit.setOnAction(event -> transition.screenChange(boneZone, defaultPane, group));
         boneZone.getChildren().addAll(bones, exit);
         group2.getChildren().add(boneZone);
-
 
         Button enter = new Button();
         enter.setText(">");
