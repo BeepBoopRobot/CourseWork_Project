@@ -1,3 +1,5 @@
+package Main_Classes;
+
 import java.util.Scanner;
 
 public class SeedGen {

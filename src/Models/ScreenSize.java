@@ -3,6 +3,16 @@ package Models;
 public class ScreenSize {
     private int screenSizeID;
     private int width;
+
+    @Override
+    public String toString() {
+        return "ScreenSize{" +
+                "screenSizeID=" + screenSizeID +
+                ", width=" + width +
+                ", height=" + height +
+                '}';
+    }
+
     private int height;
 
     public void setScreenSizeID(int screenSizeID) {

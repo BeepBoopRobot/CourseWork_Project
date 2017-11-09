@@ -1,8 +1,13 @@
+package Main_Classes;
+
+import Models.*;
+import Services.*;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.*;
 
 import java.io.*;
+import java.util.ArrayList;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -17,6 +22,8 @@ import javafx.stage.Stage;
 
 public class Main {
 
+    public static DatabaseConnectionService database;
+
     public static void main(String[] args) {
         new JFXPanel();
         Platform.runLater(Main::launch);
@@ -24,6 +31,8 @@ public class Main {
 
 
     private static void launch() {
+        database = new DatabaseConnectionService("src/Workspace.db");
+
         Stage stage = new Stage();
         stage.setTitle("Avoid Death");
         stage.setResizable(false);
@@ -35,6 +44,10 @@ public class Main {
         Scene menuScene = new Scene(group, 500, 312, Color.FORESTGREEN);
         GridPane menuPane = new GridPane();
         Image image = new Image(imageBak);
+
+        ArrayList<ScreenSize> testList = new ArrayList<>();
+        ScreenService.selectAll(testList, database);
+        for(ScreenSize d:testList) System.out.println(d);
 
         VBox vb = new VBox();
         Button butt = new Button();

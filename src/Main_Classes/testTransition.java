@@ -1,3 +1,5 @@
+package Main_Classes;
+
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.*;
