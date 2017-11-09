@@ -8,7 +8,7 @@ import javafx.util.Duration;
 
 class transition {
     static void screenChange(Pane pane1, Pane pane2, Group group) {
-        int animationLength = 100;
+        int animationLength = 1000;
 
         Rectangle transitionScreen = new Rectangle(0, 0, 480, 500);
         transitionScreen.toFront();
