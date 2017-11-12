@@ -45,9 +45,12 @@ public class Main {
         GridPane menuPane = new GridPane();
         Image image = new Image(imageBak);
 
-        ArrayList<ScreenSize> testList = new ArrayList<>();
-        ScreenService.selectAll(testList, database);
-        for(ScreenSize d:testList) System.out.println(d);
+        ArrayList<ObstacleData> testList = new ArrayList<>();
+        System.out.println(ObstacleService.selectById(1, database));
+        UserScores b = new UserScores(13 ,3, "2000", 11, "ararb");
+        ScoreService.save(b, database);
+        System.out.println(b.getScoreID());
+        for(ObstacleData d:testList) System.out.println(d);
 
         VBox vb = new VBox();
         Button butt = new Button();
@@ -57,7 +60,7 @@ public class Main {
 
         Media media = new Media(new File(soundFile).toURI().toString());
         MediaPlayer mp = new MediaPlayer(media);
-        mp.setAutoPlay(true);
+        //mp.setAutoPlay(true);
         mp.setCycleCount(MediaPlayer.INDEFINITE);
         MediaView mv = new MediaView(mp);
 

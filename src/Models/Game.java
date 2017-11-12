@@ -38,6 +38,8 @@ public class Game {
         return date;
     }
 
+    public String getDateString() { return date.toString(); }
+
     public void setDate(Date date) {
         this.date = date;
     }
