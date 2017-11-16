@@ -47,7 +47,7 @@ public class Main {
 
         ArrayList<ObstacleData> testList = new ArrayList<>();
         System.out.println(ObstacleService.selectById(1, database));
-        UserScores b = new UserScores(0, 3, "2000", 11, "ararb");
+        UserScores b = new UserScores(2, 3, "2000", 11, "ararb");
         ScoreService.save(b, database);
         System.out.println(b.getScoreID());
         for(ObstacleData d:testList) System.out.println(d);
