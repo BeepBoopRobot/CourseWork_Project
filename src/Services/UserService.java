@@ -10,7 +10,7 @@ import java.util.List;
 public class UserService {
         public static void selectAll(List<Users> targetList, DatabaseConnectionService database) {
 
-            PreparedStatement statement = database.newStatement("SELECT ScoreID, UserID, Score, TopKS, LevelSeed FROM Users ORDER BY Score");
+            PreparedStatement statement = database.newStatement("SELECT UserID, Username, HighScore, TopKS, SettingsID FROM Users ORDER BY Score");
 
             try {
                 if (statement != null) {
@@ -19,7 +19,7 @@ public class UserService {
 
                     if (results != null) {
                         while (results.next()) {
-                            targetList.add(new Users(results.getInt("ScoreID"), results.getInt("UserID"), results.getString("Score"), results.getInt("TopKS"), results.getString("LevelSeed")));
+                            targetList.add(new Users(results.getInt("UserID"), results.getString("Username"), results.getString("HighScore"), results.getInt("TopKS"), results.getInt("SettingsID")));
                         }
                     }
                 }
@@ -31,24 +31,23 @@ public class UserService {
         public static void save(Users itemToSave, DatabaseConnectionService database) {
 
             Users existingItem = null;
-            if (itemToSave.getScoreID() != 0) existingItem = selectById(itemToSave.getScoreID(), database);
+            if (itemToSave.getUserID() != 0) existingItem = selectById(itemToSave.getUserID(), database);
             try {
                 if (existingItem == null) {
-                    PreparedStatement statement = database.newStatement("INSERT INTO Users (ScoreID, UserID, Score, TopKS, LevelSeed) VALUES (?, ?, ?, ?, ?)");
-                    statement.setInt(1, itemToSave.getScoreID());
-                    statement.setInt(2, itemToSave.getUserID());
-                    statement.setString(3, itemToSave.getScore());
-                    statement.setInt(4, itemToSave.getTopKS());
-                    statement.setString(5, itemToSave.getLevelSeed());
+                    PreparedStatement statement = database.newStatement("INSERT INTO Users (Username, HighScore, TopKS, SettingsID) VALUES (?, ?, ?, ?)");
+                    statement.setString(1, itemToSave.getUserName());
+                    statement.setString(2, itemToSave.getHighScore());
+                    statement.setInt(3, itemToSave.getTopKS());
+                    statement.setInt(4, itemToSave.getSettingsID());
                     database.executeUpdate(statement);
                 }
                 else {
-                    PreparedStatement statement = database.newStatement("UPDATE Users SET UserID = ?, Score = ?, TopKS = ?, LevelSeed = ? WHERE ScoreID = ?");
-                    statement.setInt(1, itemToSave.getUserID());
-                    statement.setString(2, itemToSave.getScore());
+                    PreparedStatement statement = database.newStatement("UPDATE Users SET Username = ?, HighScore = ?, TopKS = ?, SettingsID = ? WHERE UserID = ?");
+                    statement.setString(1, itemToSave.getUserName());
+                    statement.setString(2, itemToSave.getHighScore());
                     statement.setInt(3, itemToSave.getTopKS());
-                    statement.setString(4, itemToSave.getLevelSeed());
-                    statement.setInt(5, itemToSave.getScoreID());
+                    statement.setInt(4, itemToSave.getSettingsID());
+                    statement.setInt(5, itemToSave.getUserID());
                     database.executeUpdate(statement);
                 }
             } catch (SQLException resultsException) {
@@ -60,7 +59,7 @@ public class UserService {
 
             Users result = null;
 
-            PreparedStatement statement = database.newStatement("SELECT ScoreID, UserID, Score, TopKS, LevelSeed FROM Users WHERE ScoreID = ?");
+            PreparedStatement statement = database.newStatement("SELECT UserID, Username, HighScore, TopKS, SettingsID FROM Users WHERE UserID = ?");
 
             try {
                 if (statement != null) {
@@ -69,7 +68,7 @@ public class UserService {
                     ResultSet results = database.executeQuery(statement);
 
                     if (results != null) {
-                        result = new Users(results.getInt("ScoreID"), results.getInt("UserID"), results.getString("Score"), results.getInt("TopKS"), results.getString("LevelSeed"));
+                        result = new Users(results.getInt("UserID"), results.getString("Username"), results.getString("HighScore"), results.getInt("TopKS"), results.getInt("SettingsID"));
                     }
                 }
             } catch (SQLException resultsException) {
@@ -79,4 +78,4 @@ public class UserService {
             return result;
         }
     }
-}
+

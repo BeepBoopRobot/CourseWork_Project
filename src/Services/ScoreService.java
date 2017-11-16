@@ -34,12 +34,11 @@ public class ScoreService  {
         if (itemToSave.getScoreID() != 0) existingItem = selectById(itemToSave.getScoreID(), database);
         try {
             if (existingItem == null) {
-                PreparedStatement statement = database.newStatement("INSERT INTO UserScores (ScoreID, UserID, Score, TopKS, LevelSeed) VALUES (?, ?, ?, ?, ?)");
-                statement.setInt(1, itemToSave.getScoreID());
-                statement.setInt(2, itemToSave.getUserID());
-                statement.setString(3, itemToSave.getScore());
-                statement.setInt(4, itemToSave.getTopKS());
-                statement.setString(5, itemToSave.getLevelSeed());
+                PreparedStatement statement = database.newStatement("INSERT INTO UserScores (UserID, Score, TopKS, LevelSeed) VALUES (?, ?, ?, ?)");
+                statement.setInt(1, itemToSave.getUserID());
+                statement.setString(2, itemToSave.getScore());
+                statement.setInt(3, itemToSave.getTopKS());
+                statement.setString(4, itemToSave.getLevelSeed());
                 database.executeUpdate(statement);
             }
             else {

@@ -1,7 +1,7 @@
 package Models;
 
 public class UserSettings {
-    private int settingID;
+    private int settingsID;
     private int difficultyID;
     private int musicVol;
     private int soundVol;
@@ -11,7 +11,7 @@ public class UserSettings {
     @Override
     public String toString() {
         return "Users{" +
-                "settingID=" + settingID +
+                "settingsID=" + settingsID +
                 ", difficultyID=" + difficultyID +
                 ", musicVol=" + musicVol +
                 ", soundVol=" + soundVol +
@@ -20,12 +20,12 @@ public class UserSettings {
                 '}';
     }
 
-    public int getSettingID() {
-        return settingID;
+    public int getSettingsID() {
+        return settingsID;
     }
 
-    public void setSettingID(int settingID) {
-        this.settingID = settingID;
+    public void setSettingsID(int settingsID) {
+        this.settingsID = settingsID;
     }
 
     public int getDifficultyID() {
@@ -68,9 +68,9 @@ public class UserSettings {
         this.lastSeed = lastSeed;
     }
 
-    public UserSettings(int settingID, int difficultyID, int musicVol, int soundVol, int screenSizeID, String lastSeed) {
+    public UserSettings(int settingsID, int difficultyID, int musicVol, int soundVol, int screenSizeID, String lastSeed) {
 
-        this.settingID = settingID;
+        this.settingsID = settingsID;
         this.difficultyID = difficultyID;
         this.musicVol = musicVol;
         this.soundVol = soundVol;
